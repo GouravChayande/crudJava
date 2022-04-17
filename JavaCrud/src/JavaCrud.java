@@ -183,50 +183,11 @@ public void actionPerformed(ActionEvent e)
 		panel.add(btn_1);
 		
 		JButton btn_1_1 = new JButton("clear");
-		btn_1_1.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				
-				 try {
-			          
-			            String id = txtbid.getText();
-
-			                pst = con.prepareStatement("select name,edition,price from book where id = ?");
-			                pst.setString(1, id);
-			                ResultSet rs = pst.executeQuery();
-
-			            if(rs.next()==true)
-			            {
-			              
-			                String name = rs.getString(1);
-			                String edition = rs.getString(2);
-			                String price = rs.getString(3);
-			                
-			                txtbname.setText(name);
-			                txtedition.setText(edition);
-			                txtprice.setText(price);
-			                
-			                
-			            }   
-			            else
-			            {
-			            	txtbname.setText("");
-			            	txtedition.setText("");
-			                txtprice.setText("");
-			                 
-			            }
-			            
-
-
-			        } 
-				
-				 catch (SQLException ex) {
-			           
-			        }
-				
-				
-				
-				
+		btn_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_name.setText("");
+				textField_edition.setText("");
+				textField_price.setText("");
 			}
 		});
 		btn_1_1.setBounds(109, 236, 117, 25);
